@@ -6,7 +6,7 @@ Windowshot(sOutput = "windowshot.png") {
 	Extension := "." Extension
 	hdcSource := DllCall("GetDC", "UInt",  activeWinId)
 	hbmSource := DllCall("GetCurrentObject", "Ptr", hdcSource, "UInt", 7) ; OBJ_BITMAP = 7 in msdn
-	hModule := DllCall("LoadLibrary", "Str", "gdiplus" )
+	hModule := DllCall("LoadLibrary", "Str", "gdiplus")
 	si := Chr(1)
 	DllCall("gdiplus\GdiplusStartup", "Ptr*" , pToken, "Ptr", &si, "Ptr", 0)
 	DllCall("gdiplus\GdipCreateBitmapFromHBITMAP", "Ptr", hbmSource, "UInt", 0, "UInt*", pBitmap)
@@ -28,4 +28,9 @@ Windowshot(sOutput = "windowshot.png") {
 	DllCall("DeleteDC", "UInt", hdcSource)
 }
 
-Windowshot()
+Home::
+	Windowshot()
+	return
+	
+End::
+	ExitApp 
