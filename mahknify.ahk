@@ -14,15 +14,14 @@ SetControlDelay, -1
 SendMode Input
 SetWorkingDir %A_ScriptDir%
 
-
 Home::
 	isRendering := !isRendering
 	if isRendering
-		SetTimer, Render, -1, 2147483647
+		SetTimer, Render, -0
 return
 
 Render:
-	while (isRendering) {
-		
+	while isRendering {
+		ToolTip, TEST
 	}
 return 
