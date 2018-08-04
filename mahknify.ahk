@@ -82,7 +82,7 @@ return
 ^*End:: 
 GuiClose:
 	DllCall("DeleteDC", "Ptr", hdcMag)
-	TrayTip, Machknify, Successfully Closed
+	TrayTip, Mahknify, Successfully Closed
 	ExitApp
 return
 
