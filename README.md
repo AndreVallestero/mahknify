@@ -1,5 +1,5 @@
 # Mahknify
-Mahknify is a high-performance, real-time, low-impact, magnification tool that uses AHK and GDI+. Mahknify allows the user to magnify any section of the screen simply by increasing the magnification while desired window is selected and the mouse is hovered over the desired section.
+Mahknify is a high-performance, real-time, low-impact, magnification tool that uses AHK and GDI. Mahknify allows the user to magnify any section of the screen simply by increasing the magnification while desired window is selected and the mouse is hovered over the desired section.
 
 ## Controls
 ### Home
