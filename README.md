@@ -7,7 +7,7 @@ Toggles the display window between shown and hidden
 ### End
 Stops the script
 ### Ctrl + Home
-Toggles anti-aliasing
+Toggles halftone anti-aliasing
 ### Ctrl + ScrollUp
 Increases the magnification level
 ### Ctrl + ScrollDown
