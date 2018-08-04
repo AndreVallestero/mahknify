@@ -14,4 +14,4 @@ Increases the magnification level
 Decreases the magnification level
 
 ## Notes
-To change the size and location of the displayed magnification window, adjust magX,magY,magW, and magH values at the very top of the mahknify.ahk file. By default it is set to be located at the center of the screen covering a quarter of the entire screen size.
+To change the size and location of the displayed magnification window, adjust magX, magY ,magW, and magH values at the very top of the mahknify.ahk file. By default it is set to be located at the center of the screen covering a quarter of the entire screen size.
