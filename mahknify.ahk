@@ -58,7 +58,7 @@ Magnify:
 return 
 
 +WheelUp::					; Shift+WheelUp to zoom in
-	if (zoom < 22) {		; Anti Aliasing (halftone) doesnt work past this point		
+	if (zoom < 31.9) {		; Anti Aliasing (halftone) has inconsistent results past 16 x	
 		zoom *= 1.414213562 ; Multiply zoom by sqrt(2)
 		UpdateZoom()
 	}
