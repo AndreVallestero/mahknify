@@ -6,11 +6,11 @@ Mahknify is a high-performance, real-time, low-impact, magnification tool that u
 Toggles the display window between shown and hidden
 ### End
 Stops the script
-### Ctrl + Home
+### Shift + Home
 Toggles halftone anti-aliasing
-### Ctrl + ScrollUp
+### Shift + ScrollUp
 Increases the magnification level
-### Ctrl + ScrollDown
+### Shift + ScrollDown
 Decreases the magnification level
 
 ## Notes

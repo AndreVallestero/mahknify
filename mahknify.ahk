@@ -57,21 +57,21 @@ Magnify:
 	Gui, Cancel
 return 
 
-^WheelUp::					; Shift+WheelUp to zoom in
++WheelUp::					; Shift+WheelUp to zoom in
 	if (zoom < 22) {		; Anti Aliasing (halftone) doesnt work past this point		
 		zoom *= 1.414213562 ; Multiply zoom by sqrt(2)
 		UpdateZoom()
 	}
 return 
 	
-^WheelDown::				; Shift+WheelUp to zoom out
++WheelDown::				; Shift+WheelUp to zoom out
 	if (zoom > 1.01) {
 		zoom /= 1.414213562	; Divide zoom by sqrt(2)
 		UpdateZoom()
 }
 return 
 
-^*Home::
++*Home::
 	isAntiAliasing := !isAntiAliasing
 	if isAntiAliasing
 		DllCall(pSetStretchBltMode, "Ptr", hdcMag, "Int", 4)
@@ -79,7 +79,7 @@ return
 		DllCall(pSetStretchBltMode, "Ptr", hdcMag, "Int", 0)
 return
 
-^*End:: 
++*End:: 
 GuiClose:
 	DllCall("DeleteDC", "Ptr", hdcMag)
 	TrayTip, Mahknify, Successfully Closed
