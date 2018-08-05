@@ -33,9 +33,9 @@ pSetStretchBltMode :=  DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle
 ; Create GUI to display 
 Gui, +AlwaysOnTop -Resize +ToolWindow +E0x20 +AlwaysOnTop -Caption -border
 Gui, Show, %  "x" magX " y" magY " w" magW " h" magH, Magnifier
-WinGet, winMagId, Id, Magnifier							; Get window ID of magnification window
-WinSet Transparent, 255, Magnifier 						; Allows the user to click through it
-hdcMag := DllCall(pGetDC, "Ptr",  winMagId)				; Get device context handle of magnification window
+WinGet, winMagId, Id, Magnifier				; Get window ID of magnification window
+WinSet Transparent, 255, Magnifier 			; Allows the user to click through it
+hdcMag := DllCall(pGetDC, "Ptr",  winMagId)	; Get device context handle of magnification window
 Gui, Cancel
 
 Home::
@@ -52,22 +52,22 @@ Magnify:
 
 	while isMagnifying {
 		DllCall(pStretchBlt, "Ptr", hdcMag, "Int", 0, "Int", 0, "int", magW, "Int", magH, "Ptr", hdcSource, "Int", srcX, "Int", srcY, "Int", srcW, "Int", srcH, "UInt", 0x00CC0020)
-		Sleep, 1		; Sleep minimum amount without stalling the system
+		Sleep, 1	; Sleep minimum amount without stalling the system
 	}	
 	Gui, Cancel
 return 
 
-^WheelUp::				; Shift+WheelUp to zoom in
-if (zoom < 22) {		; Anti Aliasing (halftone) doesnt work past this point		
-	zoom *= 1.414213562 ; Multiply zoom by sqrt(2)
-	UpdateZoom()
-}
+^WheelUp::					; Shift+WheelUp to zoom in
+	if (zoom < 22) {		; Anti Aliasing (halftone) doesnt work past this point		
+		zoom *= 1.414213562 ; Multiply zoom by sqrt(2)
+		UpdateZoom()
+	}
 return 
 	
-^WheelDown::			; Shift+WheelUp to zoom out
-if (zoom > 1.01) {
-	zoom /= 1.414213562	; Divide zoom by sqrt(2)
-	UpdateZoom()
+^WheelDown::				; Shift+WheelUp to zoom out
+	if (zoom > 1.01) {
+		zoom /= 1.414213562	; Divide zoom by sqrt(2)
+		UpdateZoom()
 }
 return 
 
