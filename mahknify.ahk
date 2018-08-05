@@ -33,7 +33,6 @@ pSetStretchBltMode :=  DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle
 ; Create GUI to display 
 Gui, +AlwaysOnTop -Resize +ToolWindow +E0x20 +AlwaysOnTop -Caption -border
 Gui, Show, %  "x" magX " y" magY " w" magW " h" magH, Magnifier
-;Gui, Show, x%magX% y%magY w%magW% h%magH%, Magnifier
 WinGet, winMagId, Id, Magnifier							; Get window ID of magnification window
 WinSet Transparent, 255, Magnifier 						; Allows the user to click through it
 hdcMag := DllCall(pGetDC, "Ptr",  winMagId)				; Get device context handle of magnification window
@@ -59,7 +58,7 @@ Magnify:
 return 
 
 ^WheelUp::				; Shift+WheelUp to zoom in
-if (zoom < 22) {			; Anti Aliasing (halftone) doesnt work past this point		
+if (zoom < 22) {		; Anti Aliasing (halftone) doesnt work past this point		
 	zoom *= 1.414213562 ; Multiply zoom by sqrt(2)
 	UpdateZoom()
 }
