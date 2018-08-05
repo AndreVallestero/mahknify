@@ -15,20 +15,20 @@ SendMode Input
 SetWorkingDir %A_ScriptDir%
 
 magX := A_ScreenWidth / 4
-magY := A_ScreenHeight / 4
-magW := A_ScreenWidth / 2
-magH := A_ScreenHeight / 2
+, magY := A_ScreenHeight / 4
+, magW := A_ScreenWidth / 2
+, magH := A_ScreenHeight / 2
 
-srcX := 0
-srcY := 0
-srcW := 128
-srcH := 128
+, srcX := 0
+, srcY := 0
+, srcW := 128
+, srcH := 128
 
-zoom = 1.414213562	; Start at base zoom
-isAntiAliasing := false
-pStretchBlt :=  DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "gdi32", "Ptr"), "AStr", "StretchBlt", "Ptr")
-pGetDC :=  DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "user32", "Ptr"), "AStr", "GetDC", "Ptr")
-pSetStretchBltMode :=  DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "gdi32", "Ptr"), "AStr", "SetStretchBltMode", "Ptr")
+, zoom = 1.414213562	; Start at base zoom
+, isAntiAliasing := false
+, pStretchBlt :=  DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "gdi32", "Ptr"), "AStr", "StretchBlt", "Ptr")
+, pGetDC :=  DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "user32", "Ptr"), "AStr", "GetDC", "Ptr")
+, pSetStretchBltMode :=  DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "gdi32", "Ptr"), "AStr", "SetStretchBltMode", "Ptr")
 
 ; Create GUI to display 
 Gui, +AlwaysOnTop -Resize +ToolWindow +E0x20 +AlwaysOnTop -Caption -border
@@ -58,14 +58,14 @@ Magnify:
 return 
 
 +WheelUp::					; Shift+WheelUp to zoom in
-	if (zoom < 31.9) {		; Anti Aliasing (halftone) has inconsistent results past 16 x	
+	if zoom < 31.9 {		; Anti Aliasing (halftone) has inconsistent results past 16 x	
 		zoom *= 1.414213562 ; Multiply zoom by sqrt(2)
 		UpdateZoom()
 	}
 return 
 	
 +WheelDown::				; Shift+WheelUp to zoom out
-	if (zoom > 1.01) {
+	if zoom > 1.01 {
 		zoom /= 1.414213562	; Divide zoom by sqrt(2)
 		UpdateZoom()
 	}
@@ -91,8 +91,8 @@ UpdateZoom() {
 	MouseGetPos, mouseX, mouseY
 	WinGetPos, , ,winW, winH, A
 	srcW := A_ScreenWidth / zoom
-	srcH := A_ScreenHeight / zoom
-	srcX := mouseX - srcW / 2
+	, srcH := A_ScreenHeight / zoom
+	, srcX := mouseX - srcW / 2
 	
 	if srcX < 0
 		srcX = 0
