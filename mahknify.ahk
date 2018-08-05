@@ -68,7 +68,7 @@ return
 	if (zoom > 1.01) {
 		zoom /= 1.414213562	; Divide zoom by sqrt(2)
 		UpdateZoom()
-}
+	}
 return 
 
 +*Home::
