@@ -20,6 +20,7 @@ Windowshot(sOutput = "windowshot.png") {
 		pCodec := &ci+idx
 		break
 	}
+	DllCall("ReleaseDC", "Uint", 0, "Ptr", hdcSource) 
 	DllCall("gdiplus\GdipSaveImageToFile", "Ptr", pBitmap, "Ptr", &sOutput, "Ptr", pCodec, "UInt", 0)
 	DllCall("gdiplus\GdipDisposeImage", "Ptr", pBitmap)
 	DllCall("gdiplus\GdiplusShutdown", "Ptr", pToken)

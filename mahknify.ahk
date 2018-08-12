@@ -54,6 +54,8 @@ Magnify:
 		DllCall(pStretchBlt, "Ptr", hdcMag, "Int", 0, "Int", 0, "int", magW, "Int", magH, "Ptr", hdcSource, "Int", srcX, "Int", srcY, "Int", srcW, "Int", srcH, "UInt", 0x00CC0020)
 		Sleep, 1	; Sleep minimum amount without stalling the system
 	}	
+	
+	DllCall("ReleaseDC", "Uint", 0, "Ptr", hdcSource) 
 	Gui, Cancel
 return 
 
